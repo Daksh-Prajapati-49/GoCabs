@@ -60,9 +60,10 @@ const Login = () => {
 
       // Check if the connection is secure (HTTPS)
       const isSecure = window.location.protocol === 'https:';
-      const cookieString = `access_token=${res.data.token}; expires=${expirationDate.toUTCString()}; path=/; domain=gocabsbackend.onrender.com${isSecure ? '; Secure' : ''}`;
+      const cookieString = `access_token=${res.data.token}; expires=${expirationDate.toUTCString()}; path=${process.env.REACT_APP_URL}${isSecure ? '; Secure' : ''}`;
+
       document.cookie = cookieString;
-      
+
       // // Create the cookie string
       // const cookieString = `access_token=${res.data.token}; expires=${expirationDate.toUTCString()}; path=/${isSecure ? '; Secure' : ''}`;
 
