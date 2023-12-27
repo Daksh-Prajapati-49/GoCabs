@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { makeStyles } from '@mui/styles';
-import { Container, Typography, TextField, Button, Select, MenuItem} from '@mui/material';
+import { Container, Typography, TextField, Button, Select, MenuItem } from '@mui/material';
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import CabCard from '../../components/CabCard';
@@ -14,8 +14,8 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    width : '400px',
-    margin : 'auto',
+    width: '400px',
+    margin: 'auto',
     marginTop: '2rem',
   },
   container2: {
@@ -23,17 +23,17 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'center',
-    margin:'4rem auto',
+    margin: '4rem auto',
     width: '500px',
     minWidth: '300px',
     justifyContent: 'space-around',
     alignContent: 'space-around',
-    gap:"2rem 1rem",
+    gap: "2rem 1rem",
   },
   form: {
     width: '100%',
     maxWidth: 400,
-    margin:'auto',
+    margin: 'auto',
     marginTop: '8px',
   },
   submit: {
@@ -83,33 +83,33 @@ const transformGraph = (graphArray) => {
 const Home = () => {
   const navigate = useNavigate();
   const { user, error } = useContext(AuthContext);
-  useEffect(()=>{
-    if(!user) navigate('/login');
-  },[user])
+  useEffect(() => {
+    if (!user) navigate('/login');
+  }, [user])
 
-  const [node,setNode] = useState([]);
-  const [edge,setEdge] = useState([]);
-  const [res,setRes] = useState([]);
+  const [node, setNode] = useState([]);
+  const [edge, setEdge] = useState([]);
+  const [res, setRes] = useState([]);
 
-  useEffect(()=>{
-    if(res.length===0) return;
+  useEffect(() => {
+    if (res.length === 0) return;
     console.log(node);
     console.log(edge);
-  },[res])
+  }, [res])
 
-  useEffect(()=>{
-    axios.get(`${process.env.REACT_APP_URL}/api/paths`,{
+  useEffect(() => {
+    axios.get(`${process.env.REACT_APP_URL}/api/paths`, {
       withCredentials: true,
       credentials: 'include'
-})
-      .then((res)=>{
-        setRes(res.data); 
-        const {nodes,edges} = transformGraph(res.data);
+    })
+      .then((res) => {
+        setRes(res.data);
+        const { nodes, edges } = transformGraph(res.data);
         setNode(nodes);
         setEdge(edges);
         console.log(res.data);
       })
-  },[])
+  }, [])
 
 
   const currentDate = new Date();
@@ -126,32 +126,34 @@ const Home = () => {
   const [minTime, setMinTime] = useState("0");
   const [path, setPath] = useState([]);
 
-  const [cabs,setCabsData] = useState([]);
+  const [cabs, setCabsData] = useState([]);
 
 
-  const getAvCabs= async() => {
+  const getAvCabs = async () => {
     // console.log(start_time);
     // console.log(end_time);
-    axios.post(`${process.env.REACT_APP_URL}/api/cabs/`,{startTime:start_time,endTime:end_time},{
-      'Content-Type': 'application/json',
+    axios.post(`${process.env.REACT_APP_URL}/api/cabs/`, { startTime: start_time, endTime: end_time }, {
+      headers: {
+        'Content-Type': 'application/json',
         'Cookie': document.cookie,
         withCredentials: true,
         credentials: 'include'
-})
-      .then((res)=>{
+      }
+    })
+      .then((res) => {
         // console.log(res.data);
         setCabsData(res.data);
       })
-      .catch((err)=>{
+      .catch((err) => {
         console.log(err);
       })
   }
 
   useEffect(() => {
-    if(end_time==="") return;
+    if (end_time === "") return;
     getAvCabs();
   }, [end_time])
-  
+
 
   const getCabs = async () => {
     const startTimeDate = new Date(start_time);
@@ -166,18 +168,18 @@ const Home = () => {
   };
   // console.log(user);
   useEffect(() => {
-    if(minTime==="0") return;
+    if (minTime === "0") return;
     getCabs();
   }, [minTime])
-  
-  
+
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios.post(`${process.env.REACT_APP_URL}/api/paths/shortest_path`, { v1: source, v2: destination }, {
       withCredentials: true,
       credentials: 'include'
-})
+    })
       .then(async (res) => {
         setMinTime(res.data.time);
         setPath(res.data.path);
@@ -193,13 +195,13 @@ const Home = () => {
 
 
   return (
-    <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-      
-      {node.length!==0?(
-        <div style={{display:"block",boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset", position: "relative", width: '400px', height: '400px', margin:"1rem auto", zIndex:"1", borderRadius:"10px"}}>
-        <GraphCanvas  labelType="all" nodes={node} edges={edge}/></div>
-      ):("")}
-      
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+
+      {node.length !== 0 ? (
+        <div style={{ display: "block", boxShadow: "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset", position: "relative", width: '400px', height: '400px', margin: "1rem auto", zIndex: "1", borderRadius: "10px" }}>
+          <GraphCanvas labelType="all" nodes={node} edges={edge} /></div>
+      ) : ("")}
+
       <Container component="main" maxWidth="xs" className={classes.container}>
         <Typography variant="h5" gutterBottom>
           Fill Trip Details
@@ -215,7 +217,7 @@ const Home = () => {
             style={{ marginBottom: '1rem' }}
           >
             {
-              node.map((nd)=>(
+              node.map((nd) => (
                 <MenuItem key={nd.id} value={nd.id}>{nd.id}</MenuItem>
               ))
             }
@@ -231,7 +233,7 @@ const Home = () => {
             style={{ marginBottom: '1rem' }}
           >
             {
-              node.map((nd)=>(
+              node.map((nd) => (
                 <MenuItem key={nd.id} value={nd.id}>{nd.id}</MenuItem>
               ))
             }
@@ -292,13 +294,13 @@ const Home = () => {
         </form>
       </Container>
       <div className={classes.container2}>
-            {minTime!==0? (<Typography variant="h7" style={{backgroundColor:"#3E3D53", color:"white", fontWeight:"100", padding:"1rem", fontSize:"1.3rem", borderRadius:"5px"}} className={classes.txt}>Minimum Time: {minTime} </Typography>):("")}
-            {path!==""?(<Typography variant="h7" style={{backgroundColor:"#3E3D53", color:"white", fontWeight:"100", padding:"1rem", fontSize:"1.3rem",borderRadius:"5px"}}  className={classes.txt}>Path: {path} </Typography>):("")}
-            {cabs.map((cab)=>(
-              <CabCard key={cab._id} cab={cab} t={minTime} st={start_time} et = {end_time} s={source} d={destination}/> 
-            ))}
+        {minTime !== 0 ? (<Typography variant="h7" style={{ backgroundColor: "#3E3D53", color: "white", fontWeight: "100", padding: "1rem", fontSize: "1.3rem", borderRadius: "5px" }} className={classes.txt}>Minimum Time: {minTime} </Typography>) : ("")}
+        {path !== "" ? (<Typography variant="h7" style={{ backgroundColor: "#3E3D53", color: "white", fontWeight: "100", padding: "1rem", fontSize: "1.3rem", borderRadius: "5px" }} className={classes.txt}>Path: {path} </Typography>) : ("")}
+        {cabs.map((cab) => (
+          <CabCard key={cab._id} cab={cab} t={minTime} st={start_time} et={end_time} s={source} d={destination} />
+        ))}
       </div>
-      
+
     </div>
   )
 }
