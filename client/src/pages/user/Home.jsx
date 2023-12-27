@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '4rem auto',
     width: 'fit-content',
     minWidth: '300px',
-    maxWidth: '600px',
+    maxWidth: '100%',
     justifyContent: 'space-around',
     alignContent: 'space-around',
     gap: "2rem 1rem",
@@ -43,8 +43,8 @@ const useStyles = makeStyles((theme) => ({
   txt: {
     // marginTop: '16 px',
     display: 'block',
-    width: '100%',
     fontWeight: '500',
+    width : '400px',
     // width : 'fit-content',
     // margin: '8px auto',
     'text-align': 'center'
