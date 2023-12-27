@@ -50,7 +50,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
     },
 }));
 
-const CreatePath = ({setPaths}) => {
+const CreatePath = ({ setPaths }) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
@@ -59,11 +59,13 @@ const CreatePath = ({setPaths}) => {
     const handleSave = () => {
         // console.log(data);
         axios.post(`${process.env.REACT_APP_URL}/api/paths/create`, data, {
-            'Content-Type': 'application/json',
-        'Cookie': document.cookie,
-        withCredentials: true,
-        credentials: 'include'
-      })
+            headers: {
+                'Content-Type': 'application/json',
+                'Cookie': document.cookie,
+                withCredentials: true,
+                credentials: 'include'
+            }
+        })
             .then(res => {
                 // console.log(res.data);
                 setPaths(prev => [...prev, res.data.data]);
@@ -77,8 +79,8 @@ const CreatePath = ({setPaths}) => {
             <Button
                 disabled={false}
                 size="medium"
-                variant="outlined" 
-                color="primary" 
+                variant="outlined"
+                color="primary"
                 startIcon={<AddBoxIcon />}
                 onClick={handleOpen}
             >

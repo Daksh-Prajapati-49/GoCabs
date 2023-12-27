@@ -62,11 +62,13 @@ const Path = ({ path, setPaths }) => {
     const handleSave = () => {
         // console.log(data);
         axios.put(`${process.env.REACT_APP_URL}/api/paths/${path._id}`, data, {
-            'Content-Type': 'application/json',
-        'Cookie': document.cookie,
-        withCredentials: true,
-        credentials: 'include'
-      })
+            headers: {
+                'Content-Type': 'application/json',
+                'Cookie': document.cookie,
+                withCredentials: true,
+                credentials: 'include'
+            }
+        })
             .then(res => {
                 // console.log(res.data);
                 // path = res.data;
@@ -74,14 +76,16 @@ const Path = ({ path, setPaths }) => {
             })
             .catch(err => console.log(err))
     }
-    
+
     const handleDelete = () => {
         axios.delete(`${process.env.REACT_APP_URL}/api/paths/${path._id}`, {
-            'Content-Type': 'application/json',
-        'Cookie': document.cookie,
-        withCredentials: true,
-        credentials: 'include'
-      })
+            headers: {
+                'Content-Type': 'application/json',
+                'Cookie': document.cookie,
+                withCredentials: true,
+                credentials: 'include'
+            }
+        })
             .then(res => {
                 // console.log(res.data);
                 setPaths(prev => prev.filter(item => item._id !== path._id));
@@ -108,7 +112,7 @@ const Path = ({ path, setPaths }) => {
                     size="medium"
                     variant="outlined"
                     onClick={handleOpen}
-                    startIcon={<EditIcon/>}
+                    startIcon={<EditIcon />}
                 >
                     Edit
                 </Button>

@@ -53,11 +53,13 @@ const Login = () => {
         password: password
       };
       const res = await axios.post(`${process.env.REACT_APP_URL}/api/auth/login`, credentials,{
-        'Content-Type': 'application/json',
-        'Cookie': document.cookie,
-        withCredentials: true,
-        credentials: 'include'
-  });
+        headers: {
+          'Content-Type': 'application/json',
+          'Cookie': document.cookie,
+          withCredentials: true,
+          credentials: 'include'
+        }
+      });
       // console.log(res);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       // const expirationDate = new Date();

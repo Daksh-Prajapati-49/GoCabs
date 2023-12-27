@@ -46,11 +46,13 @@ const Bookings = () => {
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_URL}/api/bookings`, {
-      'Content-Type': 'application/json',
+      headers: {
+        'Content-Type': 'application/json',
         'Cookie': document.cookie,
         withCredentials: true,
         credentials: 'include'
-})
+      }
+    })
       .then(res => {
         setBookings(res.data);
         // console.log(bookings);

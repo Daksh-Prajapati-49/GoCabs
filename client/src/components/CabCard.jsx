@@ -19,21 +19,23 @@ const CabCard = ({ cab, t, st, et, s, d }) => {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        const isConfirmed = window.confirm(`Confirm booking of ${cab.name} @₹${t*cab.price}?`);
+        const isConfirmed = window.confirm(`Confirm booking of ${cab.name} @₹${t * cab.price}?`);
 
         if (isConfirmed) {
-            axios.post(`${process.env.REACT_APP_URL}/api/bookings`, obj,{
-                'Content-Type': 'application/json',
-        'Cookie': document.cookie,
-        withCredentials: true,
-        credentials: 'include'
-          })
-                .then((res)=>{
+            axios.post(`${process.env.REACT_APP_URL}/api/bookings`, obj, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cookie': document.cookie,
+                    withCredentials: true,
+                    credentials: 'include'
+                }
+            })
+                .then((res) => {
                     // console.log(res.data);
                     alert('Booking confirmed!');
                     navigate('/');
                 })
-                .catch((err)=>{
+                .catch((err) => {
                     alert('Booking not confirmed');
                     console.log(err);
                 })

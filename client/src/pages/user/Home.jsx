@@ -177,8 +177,12 @@ const Home = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios.post(`${process.env.REACT_APP_URL}/api/paths/shortest_path`, { v1: source, v2: destination }, {
-      withCredentials: true,
-      credentials: 'include'
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': document.cookie,
+        withCredentials: true,
+        credentials: 'include'
+      }
     })
       .then(async (res) => {
         setMinTime(res.data.time);
