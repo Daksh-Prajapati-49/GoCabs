@@ -127,11 +127,11 @@ const Home = () => {
 
 
   const getAvCabs= async() => {
-    console.log(start_time);
-    console.log(end_time);
+    // console.log(start_time);
+    // console.log(end_time);
     axios.post(`${process.env.REACT_APP_URL}/api/cabs/`,{startTime:start_time,endTime:end_time},{withCredentials:true})
       .then((res)=>{
-        console.log(res.data);
+        // console.log(res.data);
         setCabsData(res.data);
       })
       .catch((err)=>{

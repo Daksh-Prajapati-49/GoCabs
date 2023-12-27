@@ -48,7 +48,7 @@ const Register = () => {
         password : password 
       };
       const res = await axios.post(`${process.env.REACT_APP_URL}/api/auth/register`, credentials);
-      console.log(res);
+      // console.log(res);
       navigate("/login")
     } catch (err) {
       // console.log("hii");

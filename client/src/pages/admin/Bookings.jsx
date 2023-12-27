@@ -48,8 +48,8 @@ const Bookings = () => {
     axios.get(`${process.env.REACT_APP_URL}/api/bookings`, { withCredentials: true })
       .then(res => {
         setBookings(res.data);
-        console.log(bookings);
-        console.log(res.data);
+        // console.log(bookings);
+        // console.log(res.data);
       })
       .catch(err => console.log(err))
   }, [])

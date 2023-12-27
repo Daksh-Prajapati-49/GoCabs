@@ -53,7 +53,7 @@ const Login = () => {
         password: password
       };
       const res = await axios.post(`${process.env.REACT_APP_URL}/api/auth/login`, credentials);
-      console.log(res);
+      // console.log(res);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       const expirationDate = new Date();
       expirationDate.setTime(expirationDate.getTime() + 3 * 60 * 60 * 1000); // 1 hour in milliseconds
@@ -63,7 +63,7 @@ const Login = () => {
       // document.cookie = res.data.token;
       navigate("/")
     } catch (err) {
-      console.log("hii");
+      // console.log("hii");
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
     // console.log('Email:', email, 'Password:', password);

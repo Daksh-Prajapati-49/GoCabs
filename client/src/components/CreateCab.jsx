@@ -57,10 +57,10 @@ const CreateCab = ({setCabs}) => {
 
     const [data, setData] = useState({ name: '', nameplate: '', price: '' });
     const handleSave = () => {
-        console.log(data);
+        // console.log(data);
         axios.post(`${process.env.REACT_APP_URL}/api/cabs/create`, data, { withCredentials: true })
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 setCabs(prev => [...prev, res.data.data]);
                 // path = res.data;
                 handleClose();

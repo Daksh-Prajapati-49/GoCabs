@@ -22,7 +22,7 @@ const CabCard = ({ cab, t, st, et, s, d }) => {
         if (isConfirmed) {
             axios.post(`${process.env.REACT_APP_URL}/api/bookings`, obj,{withCredentials:true})
                 .then((res)=>{
-                    console.log(res.data);
+                    // console.log(res.data);
                     alert('Booking confirmed!');
                 })
                 .catch((err)=>{
@@ -31,7 +31,7 @@ const CabCard = ({ cab, t, st, et, s, d }) => {
                 })
         } else {
             alert('Booking not confirmed')
-            console.log('Booking not confirmed');
+            // console.log('Booking not confirmed');
         }
     }
 

@@ -47,7 +47,7 @@ const Users = () => {
     axios.get(`${process.env.REACT_APP_URL}/api/users`, { withCredentials: true })
       .then(res => {
         setUsers(res.data);
-        console.log(users);
+        // console.log(users);
       })
       .catch(err => console.log(err))
   }, [])

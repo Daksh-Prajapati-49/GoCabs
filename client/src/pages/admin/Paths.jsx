@@ -51,7 +51,7 @@ const Paths = () => {
     axios.get(`${process.env.REACT_APP_URL}/api/paths`, { withCredentials: true })
       .then(res => {
         setPaths(res.data);
-        console.log(paths);
+        // console.log(paths);
       })
       .catch(err => console.log(err))
   }, [])

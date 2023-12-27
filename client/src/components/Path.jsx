@@ -60,10 +60,10 @@ const Path = ({ path, setPaths }) => {
 
     const [data, setData] = useState(path);
     const handleSave = () => {
-        console.log(data);
+        // console.log(data);
         axios.put(`${process.env.REACT_APP_URL}/api/paths/${path._id}`, data, { withCredentials: true })
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 // path = res.data;
                 handleClose();
             })
@@ -73,7 +73,7 @@ const Path = ({ path, setPaths }) => {
     const handleDelete = () => {
         axios.delete(`${process.env.REACT_APP_URL}/api/paths/${path._id}`, { withCredentials: true })
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 setPaths(prev => prev.filter(item => item._id !== path._id));
                 // path = res.data;
                 handleClose();

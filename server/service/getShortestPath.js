@@ -4,7 +4,7 @@ const shortestPath = (edges, source, destination) => {
     const graph = {};
     for (var i = 0; i < edges.length; i++) {
         // const [v1, v2, t1] = edges[i];
-        console.log(edges[i]);
+        // console.log(edges[i]);
         // console.log(v1, v2, t1);
         const v1 = edges[i]["v1"], v2 = edges[i]["v2"], t1 = edges[i]["t1"];
         if (!graph[v1]) graph[v1] = [];

@@ -60,10 +60,10 @@ const Cab = ({ cab, setCabs }) => {
 
     const [data, setData] = useState(cab);
     const handleSave = () => {
-        console.log(data);
+        // console.log(data);
         axios.put(`${process.env.REACT_APP_URL}/api/cabs/${cab._id}`, data, { withCredentials: true })
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 // cab = res.data;
                 handleClose();
             })
@@ -73,7 +73,7 @@ const Cab = ({ cab, setCabs }) => {
     const handleDelete = () => {
         axios.delete(`${process.env.REACT_APP_URL}/api/cabs/${cab._id}`, { withCredentials: true })
             .then(res => {
-                console.log(res.data);
+                // console.log(res.data);
                 setCabs(prev => prev.filter(item => item._id !== cab._id));
                 // cab = res.data;
                 handleClose();

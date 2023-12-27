@@ -41,7 +41,7 @@ const Cabs = () => {
     axios.get(`${process.env.REACT_APP_URL}/api/cabs`, { withCredentials: true })
       .then(res => {
         setCabs(res.data);
-        console.log(cabs);
+        // console.log(cabs);
       })
       .catch(err => console.log(err))
   }, [])

@@ -49,7 +49,7 @@ function Navbar() {
     };
 
     const handleLogout = () => {
-        console.log("------------------")
+        // console.log("------------------")
         const expirationDate = new Date();
         expirationDate.setTime(expirationDate.getTime() - 1);
 

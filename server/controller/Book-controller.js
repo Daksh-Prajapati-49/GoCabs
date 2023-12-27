@@ -65,7 +65,7 @@ const postCreateBookings = async (req, res) => {
 
     // Define your email content
     async function sendConfirmationEmail(obj) {
-        console.log(obj.user_mail);
+        // console.log(obj.user_mail);
         try {
             const info = await transporter.sendMail({
                 from: 'gocabsbooking49@gmail.com', // Sender's email address
@@ -84,7 +84,7 @@ const postCreateBookings = async (req, res) => {
             `,
             });
 
-            console.log(info.messageId); // Random ID generated after a successful send (optional)
+            // console.log(info.messageId); // Random ID generated after a successful send (optional)
         } catch (error) {
             console.error("Error sending confirmation email:", error);
         }
