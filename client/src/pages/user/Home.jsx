@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     alignItems: 'center',
     margin: '4rem auto',
-    width: 'fit-content',
+    width: '600px',
     minWidth: '300px',
     maxWidth: '100%',
     justifyContent: 'space-around',
