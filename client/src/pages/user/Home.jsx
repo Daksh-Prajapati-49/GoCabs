@@ -24,8 +24,9 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     alignItems: 'center',
     margin: '4rem auto',
-    width: '500px',
+    width: 'fit-content',
     minWidth: '300px',
+    maxWidth: '600px',
     justifyContent: 'space-around',
     alignContent: 'space-around',
     gap: "2rem 1rem",
@@ -290,8 +291,8 @@ const Home = () => {
         </form>
       </Container>
       <div className={classes.container2}>
-        {minTime !== 0 ? (<Typography variant="h7" style={{ backgroundColor: "#3E3D53", color: "white", fontWeight: "100", padding: "1rem", fontSize: "1.3rem", borderRadius: "5px" }} className={classes.txt}>Minimum Time: {minTime} </Typography>) : ("")}
-        {path !== "" ? (<Typography variant="h7" style={{ backgroundColor: "#3E3D53", color: "white", fontWeight: "100", padding: "1rem", fontSize: "1.3rem", borderRadius: "5px" }} className={classes.txt}>Path: {path} </Typography>) : ("")}
+        {minTime !== 0 ? (<Typography variant="h7" style={{ width:"400px", backgroundColor: "#3E3D53", color: "white", fontWeight: "100", padding: "1rem", fontSize: "1.3rem", borderRadius: "5px" }} className={classes.txt}>Minimum Time: {minTime} </Typography>) : ("")}
+        {path !== "" ? (<Typography variant="h7" style={{ width:"400px", backgroundColor: "#3E3D53", color: "white", fontWeight: "100", padding: "1rem", fontSize: "1.3rem", borderRadius: "5px" }} className={classes.txt}>Path: {path} </Typography>) : ("")}
         {cabs.map((cab) => (
           <CabCard key={cab._id} cab={cab} t={minTime} st={start_time} et={end_time} s={source} d={destination} />
         ))}
