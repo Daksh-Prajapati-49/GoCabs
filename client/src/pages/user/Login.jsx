@@ -60,14 +60,14 @@ const Login = () => {
   });
       // console.log(res);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      const expirationDate = new Date();
-      expirationDate.setTime(expirationDate.getTime() + 3 * 60 * 60 * 1000); // 3 hours in milliseconds
+      // const expirationDate = new Date();
+      // expirationDate.setTime(expirationDate.getTime() + 3 * 60 * 60 * 1000); // 3 hours in milliseconds
 
-      // // Check if the connection is secure (HTTPS)
-      const isSecure = window.location.protocol === 'https:';
-      const cookieString = `access_token=${res.data.token}; expires=${expirationDate.toUTCString()}; path=/ ${isSecure ? '; Secure' : ''}`;
+      // // // Check if the connection is secure (HTTPS)
+      // const isSecure = window.location.protocol === 'https:';
+      // const cookieString = `access_token=${res.data.token}; expires=${expirationDate.toUTCString()}; path=/ ${isSecure ? '; Secure' : ''}`;
 
-      document.cookie = cookieString;
+      // document.cookie = cookieString;
 
       // // Create the cookie string
       // const cookieString = `access_token=${res.data.token}; expires=${expirationDate.toUTCString()}; path=/${isSecure ? '; Secure' : ''}`;
