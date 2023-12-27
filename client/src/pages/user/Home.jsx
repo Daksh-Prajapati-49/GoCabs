@@ -98,7 +98,10 @@ const Home = () => {
   },[res])
 
   useEffect(()=>{
-    axios.get(`${process.env.REACT_APP_URL}/api/paths`,{withCredentials:true})
+    axios.get(`${process.env.REACT_APP_URL}/api/paths`,{
+      withCredentials: true,
+      credentials: 'include'
+})
       .then((res)=>{
         setRes(res.data); 
         const {nodes,edges} = transformGraph(res.data);
@@ -129,7 +132,10 @@ const Home = () => {
   const getAvCabs= async() => {
     // console.log(start_time);
     // console.log(end_time);
-    axios.post(`${process.env.REACT_APP_URL}/api/cabs/`,{startTime:start_time,endTime:end_time},{withCredentials:true})
+    axios.post(`${process.env.REACT_APP_URL}/api/cabs/`,{startTime:start_time,endTime:end_time},{
+      withCredentials: true,
+      credentials: 'include'
+})
       .then((res)=>{
         // console.log(res.data);
         setCabsData(res.data);
@@ -166,7 +172,10 @@ const Home = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    axios.post(`${process.env.REACT_APP_URL}/api/paths/shortest_path`, { v1: source, v2: destination }, { withCredentials: true })
+    axios.post(`${process.env.REACT_APP_URL}/api/paths/shortest_path`, { v1: source, v2: destination }, {
+      withCredentials: true,
+      credentials: 'include'
+})
       .then(async (res) => {
         setMinTime(res.data.time);
         setPath(res.data.path);

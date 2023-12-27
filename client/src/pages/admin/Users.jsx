@@ -44,7 +44,10 @@ const Users = () => {
   const [users, setUsers] = useState([])
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_URL}/api/users`, { withCredentials: true })
+    axios.get(`${process.env.REACT_APP_URL}/api/users`, {
+      withCredentials: true,
+      credentials: 'include'
+})
       .then(res => {
         setUsers(res.data);
         // console.log(users);

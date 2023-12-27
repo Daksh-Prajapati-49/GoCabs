@@ -38,7 +38,10 @@ const Cabs = () => {
   const [cabs, setCabs] = useState([])
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_URL}/api/cabs`, { withCredentials: true })
+    axios.get(`${process.env.REACT_APP_URL}/api/cabs`, {
+      withCredentials: true,
+      credentials: 'include'
+})
       .then(res => {
         setCabs(res.data);
         // console.log(cabs);

@@ -43,7 +43,10 @@ const MyBookings = () => {
   const [bookings, setBookings] = useState([])
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_URL}/api/bookings/${user.mail}`, { withCredentials: true })
+    axios.get(`${process.env.REACT_APP_URL}/api/bookings/${user.mail}`, {
+      withCredentials: true,
+      credentials: 'include'
+})
       .then(res => {
         setBookings(res.data);
         // console.log(bookings);

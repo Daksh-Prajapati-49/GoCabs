@@ -22,7 +22,10 @@ const CabCard = ({ cab, t, st, et, s, d }) => {
         const isConfirmed = window.confirm(`Confirm booking of ${cab.name} @₹${t*cab.price}?`);
 
         if (isConfirmed) {
-            axios.post(`${process.env.REACT_APP_URL}/api/bookings`, obj,{withCredentials:true})
+            axios.post(`${process.env.REACT_APP_URL}/api/bookings`, obj,{
+                withCredentials: true,
+                credentials: 'include'
+          })
                 .then((res)=>{
                     // console.log(res.data);
                     alert('Booking confirmed!');

@@ -58,7 +58,10 @@ const CreateCab = ({setCabs}) => {
     const [data, setData] = useState({ name: '', nameplate: '', price: '' });
     const handleSave = () => {
         // console.log(data);
-        axios.post(`${process.env.REACT_APP_URL}/api/cabs/create`, data, { withCredentials: true })
+        axios.post(`${process.env.REACT_APP_URL}/api/cabs/create`, data, {
+            withCredentials: true,
+            credentials: 'include'
+      })
             .then(res => {
                 // console.log(res.data);
                 setCabs(prev => [...prev, res.data.data]);

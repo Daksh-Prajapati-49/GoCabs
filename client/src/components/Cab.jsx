@@ -61,7 +61,10 @@ const Cab = ({ cab, setCabs }) => {
     const [data, setData] = useState(cab);
     const handleSave = () => {
         // console.log(data);
-        axios.put(`${process.env.REACT_APP_URL}/api/cabs/${cab._id}`, data, { withCredentials: true })
+        axios.put(`${process.env.REACT_APP_URL}/api/cabs/${cab._id}`, data,{
+            withCredentials: true,
+            credentials: 'include'
+      })
             .then(res => {
                 // console.log(res.data);
                 // cab = res.data;
@@ -71,7 +74,10 @@ const Cab = ({ cab, setCabs }) => {
     }
 
     const handleDelete = () => {
-        axios.delete(`${process.env.REACT_APP_URL}/api/cabs/${cab._id}`, { withCredentials: true })
+        axios.delete(`${process.env.REACT_APP_URL}/api/cabs/${cab._id}`, {
+            withCredentials: true,
+            credentials: 'include'
+      })
             .then(res => {
                 // console.log(res.data);
                 setCabs(prev => prev.filter(item => item._id !== cab._id));

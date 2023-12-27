@@ -58,7 +58,10 @@ const CreatePath = ({setPaths}) => {
     const [data, setData] = useState({ v1: '', v2: '', t1: '' });
     const handleSave = () => {
         // console.log(data);
-        axios.post(`${process.env.REACT_APP_URL}/api/paths/create`, data, { withCredentials: true })
+        axios.post(`${process.env.REACT_APP_URL}/api/paths/create`, data, {
+            withCredentials: true,
+            credentials: 'include'
+      })
             .then(res => {
                 // console.log(res.data);
                 setPaths(prev => [...prev, res.data.data]);

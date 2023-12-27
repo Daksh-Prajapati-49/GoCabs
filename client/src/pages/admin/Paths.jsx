@@ -48,7 +48,10 @@ const Paths = () => {
   const [paths, setPaths] = useState([])
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_URL}/api/paths`, { withCredentials: true })
+    axios.get(`${process.env.REACT_APP_URL}/api/paths`, {
+      withCredentials: true,
+      credentials: 'include'
+})
       .then(res => {
         setPaths(res.data);
         // console.log(paths);

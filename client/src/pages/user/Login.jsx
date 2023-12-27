@@ -52,7 +52,10 @@ const Login = () => {
         mail: email,
         password: password
       };
-      const res = await axios.post(`${process.env.REACT_APP_URL}/api/auth/login`, credentials);
+      const res = await axios.post(`${process.env.REACT_APP_URL}/api/auth/login`, credentials,{
+        withCredentials: true,
+        credentials: 'include'
+  });
       // console.log(res);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       const expirationDate = new Date();
@@ -60,7 +63,7 @@ const Login = () => {
 
       // // Check if the connection is secure (HTTPS)
       const isSecure = window.location.protocol === 'https:';
-      const cookieString = `access_token=${res.data.token}; expires=${expirationDate.toUTCString()}; path='/'`;
+      const cookieString = `access_token=${res.data.token}; expires=${expirationDate.toUTCString()}; path=/ ${isSecure ? '; Secure' : ''}`;
 
       document.cookie = cookieString;
 
