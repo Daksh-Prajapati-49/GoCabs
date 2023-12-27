@@ -56,9 +56,15 @@ const Login = () => {
       // console.log(res);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
       const expirationDate = new Date();
-      expirationDate.setTime(expirationDate.getTime() + 3 * 60 * 60 * 1000); // 1 hour in milliseconds
-      const cookieString = `access_token=${res.data.token}; expires=${expirationDate.toUTCString()}; path=/`;
+      expirationDate.setTime(expirationDate.getTime() + 3 * 60 * 60 * 1000); // 3 hours in milliseconds
 
+      // Check if the connection is secure (HTTPS)
+      const isSecure = window.location.protocol === 'https:';
+
+      // Create the cookie string
+      const cookieString = `access_token=${res.data.token}; expires=${expirationDate.toUTCString()}; path=/${isSecure ? '; Secure' : ''}`;
+
+      // Set the cookie
       document.cookie = cookieString;
       // document.cookie = res.data.token;
       navigate("/")
