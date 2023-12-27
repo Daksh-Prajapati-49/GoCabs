@@ -59,8 +59,10 @@ const CreateCab = ({setCabs}) => {
     const handleSave = () => {
         // console.log(data);
         axios.post(`${process.env.REACT_APP_URL}/api/cabs/create`, data, {
-            withCredentials: true,
-            credentials: 'include'
+            'Content-Type': 'application/json',
+        'Cookie': document.cookie,
+        withCredentials: true,
+        credentials: 'include'
       })
             .then(res => {
                 // console.log(res.data);

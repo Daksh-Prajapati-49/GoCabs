@@ -133,8 +133,10 @@ const Home = () => {
     // console.log(start_time);
     // console.log(end_time);
     axios.post(`${process.env.REACT_APP_URL}/api/cabs/`,{startTime:start_time,endTime:end_time},{
-      withCredentials: true,
-      credentials: 'include'
+      'Content-Type': 'application/json',
+        'Cookie': document.cookie,
+        withCredentials: true,
+        credentials: 'include'
 })
       .then((res)=>{
         // console.log(res.data);

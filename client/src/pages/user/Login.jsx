@@ -53,6 +53,8 @@ const Login = () => {
         password: password
       };
       const res = await axios.post(`${process.env.REACT_APP_URL}/api/auth/login`, credentials,{
+        'Content-Type': 'application/json',
+        'Cookie': document.cookie,
         withCredentials: true,
         credentials: 'include'
   });

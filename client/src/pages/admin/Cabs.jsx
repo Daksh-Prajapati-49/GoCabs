@@ -39,8 +39,10 @@ const Cabs = () => {
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_URL}/api/cabs`, {
-      withCredentials: true,
-      credentials: 'include'
+      'Content-Type': 'application/json',
+        'Cookie': document.cookie,
+        withCredentials: true,
+        credentials: 'include'
 })
       .then(res => {
         setCabs(res.data);
