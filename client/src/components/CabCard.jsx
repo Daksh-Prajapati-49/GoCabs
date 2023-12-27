@@ -23,12 +23,8 @@ const CabCard = ({ cab, t, st, et, s, d }) => {
 
         if (isConfirmed) {
             axios.post(`${process.env.REACT_APP_URL}/api/bookings`, obj, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Cookie': document.cookie,
-                    withCredentials: true,
-                    credentials: 'include'
-                }
+                withCredentials: true,
+                credentials: 'include'
             })
                 .then((res) => {
                     // console.log(res.data);

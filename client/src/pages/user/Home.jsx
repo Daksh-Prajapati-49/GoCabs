@@ -133,12 +133,8 @@ const Home = () => {
     // console.log(start_time);
     // console.log(end_time);
     axios.post(`${process.env.REACT_APP_URL}/api/cabs/`, { startTime: start_time, endTime: end_time }, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Cookie': document.cookie,
-        withCredentials: true,
-        credentials: 'include'
-      }
+      withCredentials: true,
+      credentials: 'include'
     })
       .then((res) => {
         // console.log(res.data);
@@ -177,12 +173,8 @@ const Home = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios.post(`${process.env.REACT_APP_URL}/api/paths/shortest_path`, { v1: source, v2: destination }, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Cookie': document.cookie,
-        withCredentials: true,
-        credentials: 'include'
-      }
+      withCredentials: true,
+      credentials: 'include'
     })
       .then(async (res) => {
         setMinTime(res.data.time);

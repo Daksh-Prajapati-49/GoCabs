@@ -62,12 +62,8 @@ const Cab = ({ cab, setCabs }) => {
     const handleSave = () => {
         // console.log(data);
         axios.put(`${process.env.REACT_APP_URL}/api/cabs/${cab._id}`, data, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Cookie': document.cookie,
-                withCredentials: true,
-                credentials: 'include'
-            }
+            withCredentials: true,
+            credentials: 'include'
         })
             .then(res => {
                 // console.log(res.data);
@@ -79,12 +75,8 @@ const Cab = ({ cab, setCabs }) => {
 
     const handleDelete = () => {
         axios.delete(`${process.env.REACT_APP_URL}/api/cabs/${cab._id}`, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Cookie': document.cookie,
-                withCredentials: true,
-                credentials: 'include'
-            }
+            withCredentials: true,
+            credentials: 'include'
         })
             .then(res => {
                 // console.log(res.data);

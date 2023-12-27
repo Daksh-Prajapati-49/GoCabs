@@ -49,12 +49,8 @@ const Paths = () => {
 
   useEffect(() => {
     axios.get(`${process.env.REACT_APP_URL}/api/paths`, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Cookie': document.cookie,
-        withCredentials: true,
-        credentials: 'include'
-      }
+      withCredentials: true,
+      credentials: 'include'
     })
       .then(res => {
         setPaths(res.data);

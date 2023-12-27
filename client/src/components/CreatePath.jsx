@@ -59,12 +59,8 @@ const CreatePath = ({ setPaths }) => {
     const handleSave = () => {
         // console.log(data);
         axios.post(`${process.env.REACT_APP_URL}/api/paths/create`, data, {
-            headers: {
-                'Content-Type': 'application/json',
-                'Cookie': document.cookie,
-                withCredentials: true,
-                credentials: 'include'
-            }
+            withCredentials: true,
+            credentials: 'include'
         })
             .then(res => {
                 // console.log(res.data);
