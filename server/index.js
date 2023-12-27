@@ -7,7 +7,7 @@ const cookieParser = require("cookie-parser");
 
 const cors = require('cors');
 const corsOptions ={
-    origin:'*', 
+    origin:'https://gocabs-rho.vercel.app/', 
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
