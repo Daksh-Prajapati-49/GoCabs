@@ -1,9 +1,11 @@
 import React, { useContext } from 'react'
 import { Typography } from '@mui/material'
 import { AuthContext } from "../context/AuthContext";
+import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 const CabCard = ({ cab, t, st, et, s, d }) => {
+    const navigate = useNavigate();
     const { user } = useContext(AuthContext);
     const obj = {
         user_mail: user.mail,
@@ -24,6 +26,7 @@ const CabCard = ({ cab, t, st, et, s, d }) => {
                 .then((res)=>{
                     // console.log(res.data);
                     alert('Booking confirmed!');
+                    navigate('/');
                 })
                 .catch((err)=>{
                     alert('Booking not confirmed');
