@@ -15,6 +15,13 @@ const corsOptions ={
 app.use(cors(corsOptions));
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://gocabs-rho.vercel.app');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    // ... other headers and middleware
+    next();
+});
+
 const connectDB = require("./config/db"); //added
 
 const authRouter = require("./routes/auth-routes.js");
