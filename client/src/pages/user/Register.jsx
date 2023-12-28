@@ -41,6 +41,7 @@ const Register = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    
     // Add your Register logic here
     try {
       const credentials = { 
