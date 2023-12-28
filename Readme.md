@@ -2,6 +2,10 @@
 
 Gocabs is a comprehensive cab booking application developed using the MERN (MongoDB, Express.js, React.js, Node.js) stack. It features a user-friendly Material UI interface, secure authentication, admin roles, and optimal routing with the Dijkstra algorithm.
 
+## Deployed Links
+   - Server: https://gocabsbackend.onrender.com/
+   - Client: https://gocabs-rho.vercel.app/
+
 ## Features
 
 - **User Registration and Authentication:**
