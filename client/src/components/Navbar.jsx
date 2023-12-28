@@ -61,14 +61,14 @@ function Navbar() {
         dispatch({ type: "LOGOUT" });
         navigate('/login');
     }
-    if(!user){
+    if (!user) {
         return <></>;
     }
-    else{
+    else {
         settings[0] = user.mail;
     }
 
-    
+
 
     return (
         <AppBar position="static" style={{ backgroundColor: "black" }}>
@@ -96,50 +96,50 @@ function Navbar() {
                             GoCabs
                         </Link>
                     </Typography>
-                    {user.isAdmin?(
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: 'block', md: 'none' },
-                            }}
-                        >
-                            {(user.isAdmin)?(pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Link to={`/admin/${page.toLowerCase()}`} style={{
-                                        textDecoration: 'none',
-                                        color: 'inherit',
-                                    }}>
-                                        <Typography textAlign="center">
-                                            {page}
-                                        </Typography>
-                                    </Link>
-                                </MenuItem>
-                            ))):("")}
-                        </Menu>
-                    </Box>):("")
+                    {user.isAdmin ? (
+                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                            <IconButton
+                                size="large"
+                                aria-label="account of current user"
+                                aria-controls="menu-appbar"
+                                aria-haspopup="true"
+                                onClick={handleOpenNavMenu}
+                                color="inherit"
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={anchorElNav}
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'left',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'left',
+                                }}
+                                open={Boolean(anchorElNav)}
+                                onClose={handleCloseNavMenu}
+                                sx={{
+                                    display: { xs: 'block', md: 'none' },
+                                }}
+                            >
+                                {(user.isAdmin) ? (pages.map((page) => (
+                                    <MenuItem key={page} onClick={handleCloseNavMenu}>
+                                        <Link to={`/admin/${page.toLowerCase()}`} style={{
+                                            textDecoration: 'none',
+                                            color: 'inherit',
+                                        }}>
+                                            <Typography textAlign="center">
+                                                {page}
+                                            </Typography>
+                                        </Link>
+                                    </MenuItem>
+                                ))) : ("")}
+                            </Menu>
+                        </Box>) : ("")
                     }
                     <DirectionsCarFilledIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
@@ -158,11 +158,16 @@ function Navbar() {
                             textDecoration: 'none',
                         }}
                     >
-                        GoCabs
+                        <Link to="/" style={{
+                            textDecoration: 'none',
+                            color: 'inherit',
+                        }}>
+                            GoCabs
+                        </Link>
                     </Typography>
-                    
+
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {(user.isAdmin)?(pages.map((page) => (
+                        {(user.isAdmin) ? (pages.map((page) => (
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
@@ -175,7 +180,7 @@ function Navbar() {
                                     {page}
                                 </Link>
                             </Button>
-                        ))):("")}
+                        ))) : ("")}
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
@@ -206,13 +211,13 @@ function Navbar() {
                                 </MenuItem>
                             ))} */}
                             <MenuItem key={settings[0]} onClick={handleCloseUserMenu}>
-                                <div style={{fontWeight:"500"}}>{settings[0]}</div>
+                                <div style={{ fontWeight: "500" }}>{settings[0]}</div>
                             </MenuItem>
                             <MenuItem key={settings[1]} onClick={handleCloseUserMenu}>
                                 <Link to={'/myBookings'} fullWidth textAlign="center" style={{
-                                        textDecoration: 'none',
-                                        color: 'inherit',
-                                    }}>{settings[1]}</Link>
+                                    textDecoration: 'none',
+                                    color: 'inherit',
+                                }}>{settings[1]}</Link>
                             </MenuItem>
                             <MenuItem key={settings[2]} onClick={handleCloseUserMenu}>
                                 <Typography textAlign="center" onClick={handleLogout}>
